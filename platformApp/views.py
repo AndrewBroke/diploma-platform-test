@@ -8,3 +8,9 @@ def index(request):
         "title": "Platform"
     }
     return render(request, "platform/index.html", context)
+
+def test_view(request, theme_id):
+    context = {
+        "title": "Test на тему 1"
+    }
+    return render(request, f"platform/tests/test-theme-{theme_id}.html", context)
