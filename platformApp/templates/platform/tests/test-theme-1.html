@@ -1,15 +1,52 @@
+{% extends 'platform/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'platform/css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'platform/css/style.css' %}">
-    <title>{{ title }}</title>
-</head>
-<body>
-    Test-theme-1
-</body>
-</html>
+
+{% block loadStyles %}
+<link rel="stylesheet" href="{% static "platform/css/test-theme-1/style.css" %}">
+{% endblock loadStyles %}
+
+{% block content %}
+<div class="content">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static "platform/img/test-theme-1/paper.jpg" %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static "platform/img/test-theme-1/paper.jpg" %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static "platform/img/test-theme-1/paper.jpg" %}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="stamps">
+        <div class="integrity-stamp">
+            <img src="{% static 'platform/img/test-theme-1/integrity.png' %}" width="170px" alt="">
+        </div>
+        <div class="privacy-stamp">
+            <img src="{% static 'platform/img/test-theme-1/privacy.png' %}" width="170px" alt="">
+        </div>
+        <div class="access-stamp">
+            <img src="{% static 'platform/img/test-theme-1/integrity.png' %}" width="170px" alt="">
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scriptLoad %}
+<script>
+    var static_url = "{% get_static_prefix %}";
+</script>
+{% comment %} <script src="{% static 'platform/js/test-theme-1/script.js' %}"></script> {% endcomment %}
+{% endblock scriptLoad %}

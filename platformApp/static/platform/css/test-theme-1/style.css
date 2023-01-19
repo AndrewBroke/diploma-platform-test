@@ -1,0 +1,21 @@
+main{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    padding-top: 50px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stamps{
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+}
