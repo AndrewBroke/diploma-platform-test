@@ -13,7 +13,7 @@ class SimpleAnswer(models.Model):
 
 class SimpleQuestion(models.Model):
     text = models.TextField()
-    corrent_answer = models.ForeignKey(
+    correct_answer = models.ForeignKey(
         "SimpleAnswer",
         on_delete=models.CASCADE
     )
