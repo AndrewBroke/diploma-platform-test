@@ -13,7 +13,7 @@ function showIntegrityStamp(){
     if(!canClickStamp) return
     clearStamp()
     let activeSlide = getActiveSlide()
-    activeSlide.querySelector(".question-stamps img").style.display = "none"
+    //activeSlide.querySelector(".question-stamps img").style.display = "none"
     let integrityStamp = activeSlide.querySelector("#question-integrity")
     integrityStamp.style.display = "block"
     let input = activeSlide.querySelector("input")
@@ -24,7 +24,7 @@ function showPrivacyStamp(){
     if(!canClickStamp) return
     clearStamp()
     let activeSlide = getActiveSlide()
-    activeSlide.querySelector(".question-stamps img").style.display = "none"
+    //activeSlide.querySelector(".question-stamps img").style.display = "none"
     let privacyStamp = activeSlide.querySelector("#question-privacy")
     privacyStamp.style.display = "block"
     let input = activeSlide.querySelector("input")
@@ -69,6 +69,7 @@ carousel.addEventListener("slid.bs.carousel", () => {
 
 function sendTestCallback(event){
     let inputs = document.querySelectorAll("input[name]")
+    return // Для теста!!!
     for (let i = 0; i < inputs.length; i++) {
         if(inputs[i].value == "-1"){
             event.preventDefault()

@@ -1,12 +1,30 @@
 {% extends 'platform/base.html' %}
 
 {% block content %}
-<ul>
-    <li><a href="#">Тема 1</a></li>
-    <li><a href="#">Тема 2</a></li>
-    <li><a href="#">Тема 3</a></li>
-    <li><a href="#">Тема 4</a></li>
-</ul>
+<div class="accordion col-6" id="themeAccordion">
+    {% if themes %}
+    {% for theme in themes %}
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading{{forloop.counter}}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+                {{ theme.name }}
+            </button>
+        </h2>
+        <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="heading{{forloop.counter}}"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">Теория</a>
+                    <a href="/platformApp/test/{{ theme.pk }}" class="list-group-item list-group-item-action">Тест</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
 {% endblock content %}
 
 {% block scriptLoad %}

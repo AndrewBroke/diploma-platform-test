@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block loadStyles %}
-<link rel="stylesheet" href="{% static "platform/css/test-theme-1/style.css" %}">
+<link rel="stylesheet" href="{% static "platform/css/test-theme-2/style.css" %}">
 {% endblock loadStyles %}
 
 {% block content %}
@@ -32,16 +32,15 @@
                         <p class="question-text">{{ question.text }}</p>
                     </div>
                     <div class="question-stamps">
-                        <img src="{% static 'platform/img/test-theme-1/integrity.png' %}" width="170px" alt=""
-                            id="question-integrity">
-                        <img src="{% static 'platform/img/test-theme-1/privacy.png' %}" width="170px" alt=""
-                            id="question-privacy">
-                        <img src="{% static 'platform/img/test-theme-1/access.png' %}" width="170px" alt=""
-                            id="question-access">
+                        <img src="{% static 'platform/img/test-theme-1/Violation.png' %}" width="170px" alt=""
+                            id="question-violation">
+                        <img src="{% static 'platform/img/test-theme-1/NoViolation.png' %}" width="170px" alt=""
+                            id="question-no-violation">
                     </div>
                 </div>
                 {% endfor %}
                 {% endif %}
+                
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselQuestions"
                 data-bs-slide="prev">
@@ -56,18 +55,24 @@
         </div>
         <input type="submit" class="btn btn-primary" id="submit-btn">
     </form>
+    {% if questions and measures %}
+                {% for question in questions %}
+                <select class="form-select" aria-label="Default select example" name="question-measure-{{question.pk}}" style="display: none;">
+                    {% for measure in measures %}
+                    <option value="{{measure.pk}}" {% if measure.pk == 6 %}selected{% endif %}>{{measure.text}}</option>
+                    {% endfor %}
+                </select>
+                {% endfor %}
+                {% endif %}
     <div class="stamps">
         <div class="cross-stamp" id="clear-btn">
             <img src="{% static 'platform/img/test-theme-1/cross.png' %}" width="135px" alt="">
         </div>
-        <div class="integrity-stamp" id="integrity-btn">
-            <img src="{% static 'platform/img/test-theme-1/integrity.png' %}" width="170px" alt="">
+        <div class="violation-stamp" id="violation-btn">
+            <img src="{% static 'platform/img/test-theme-1/Violation.png' %}" width="170px" alt="">
         </div>
-        <div class="privacy-stamp" id="privacy-btn">
-            <img src="{% static 'platform/img/test-theme-1/privacy.png' %}" width="170px" alt="">
-        </div>
-        <div class="access-stamp" id="access-btn">
-            <img src="{% static 'platform/img/test-theme-1/access.png' %}" width="170px" alt="">
+        <div class="no-violation-stamp" id="no-integrity-btn">
+            <img src="{% static 'platform/img/test-theme-1/NoViolation.png' %}" width="170px" alt="">
         </div>
 
     </div>
@@ -76,5 +81,5 @@
 {% endblock content %}
 
 {% block scriptLoad %}
-<script src="{% static 'platform/js/test-theme-1/script.js' %}"></script>
+<script src="{% static 'platform/js/test-theme-2/script.js' %}"></script>
 {% endblock scriptLoad %}

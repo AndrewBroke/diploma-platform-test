@@ -4,3 +4,7 @@ from django.contrib import admin
 from .models import *
 admin.site.register(SimpleQuestion)
 admin.site.register(SimpleAnswer)
+admin.site.register(Measure)
+admin.site.register(Test2Relations)
+admin.site.register(Profile)
+admin.site.register(Theme)

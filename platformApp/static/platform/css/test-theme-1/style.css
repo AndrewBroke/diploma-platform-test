@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
-main {
-    display: flex;
 
-    justify-content: center;
-    align-items: center;
-}
 
 .content {
     padding-top: 50px;
@@ -82,4 +77,10 @@ main {
 
 .cross-stamp img{
     display: block;
+}
+
+#submit-btn{
+    position: absolute;
+    right: 30px;
+    bottom: 50vh;
 }
