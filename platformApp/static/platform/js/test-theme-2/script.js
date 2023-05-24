@@ -3,6 +3,8 @@ console.log("Load script for test theme 2")
 let violationBtn = document.querySelector("#violation-btn")
 let noViolationBtn = document.querySelector("#no-integrity-btn")
 let clearBtn = document.querySelector("#clear-btn")
+let measures = document.querySelectorAll("select[name^='question-measure']")
+console.log(measures)
 
 let canClickStamp = true
 
@@ -46,6 +48,8 @@ clearBtn.addEventListener("click", clearStamp)
 violationBtn.addEventListener("click", showViolationStamp)
 noViolationBtn.addEventListener("click", showNoViolationStamp)
 
+
+
 let carousel = document.querySelector("#carouselQuestions")
 carousel.addEventListener("slide.bs.carousel", () => {
     canClickStamp = false
@@ -53,7 +57,26 @@ carousel.addEventListener("slide.bs.carousel", () => {
 
 carousel.addEventListener("slid.bs.carousel", () => {
     canClickStamp = true
+    let currentSlide = getActiveSlide()
+    let currentQuestion = currentSlide.querySelector("input").getAttribute("name").split("-").at(-1)
+    clearMeasures()
+    setActiveMeasure(currentQuestion)
+    console.log(currentQuestion)
 })
+
+function setActiveMeasure(question){
+    measures.forEach(element => {
+        if(element.getAttribute("name").split("-").at(-1) == question){
+            element.style.display = "block"
+        }
+    });
+}
+
+function clearMeasures(){
+    measures.forEach(element => {
+        element.style.display = "none"
+    });
+}
 
 function sendTestCallback(event){
     let inputs = document.querySelectorAll("input[name]")

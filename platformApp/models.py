@@ -51,7 +51,14 @@ class Theme(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     grade = models.IntegerField()
-    tests = models.JSONField(null=True)
+    tests = models.JSONField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.pk} - {self.user.username}"
+    
+class Theory(models.Model):
+    theme = models.ForeignKey("Theme", on_delete=models.CASCADE)
+    text = models.TextField(blank=True)
+    
+    def __str__(self):
+        return f"{self.pk} - {self.theme.name}"

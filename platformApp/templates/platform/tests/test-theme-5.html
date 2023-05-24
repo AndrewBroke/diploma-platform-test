@@ -1,0 +1,26 @@
+{% extends 'platform/base.html' %}
+{% load static %}
+
+{% block loadStyles %}
+<link rel="stylesheet" href="{% static "platform/css/test-theme-5/style.css" %}">
+{% endblock loadStyles %}
+
+{% block scriptLoad %}
+<script src="{% static 'platform/js/test-theme-5/script.js' %}"></script>
+{% endblock scriptLoad %}
+
+{% block content %}
+<div class="content">
+    <form action="{{ request.get_full_path }}" method="post">
+        {% csrf_token %}
+        <p>На этом тесте вам необходимо пройти историю и решить задания по следующей ссылке:</p>
+        <p><a href="https://7nf4373s.play.borogove.io/" target="_blank">Пройти</a></p>
+        <p>При успешном прохождении вам будет показан флаг, который необходимо ввести в форму ниже</p>
+        <label for="inputPassword" class="col-sm-2 col-form-label">Флаг:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="flag-input" name="flag">
+        </div>
+        <button type="submit" class="btn btn-primary mb-3 mt-3">Отправить</button>
+    </form>
+</div>
+{% endblock content %}

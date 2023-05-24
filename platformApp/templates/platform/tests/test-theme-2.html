@@ -16,8 +16,9 @@
             <div class="carousel-indicators">
                 {% if questions %}
                 {% for question in questions %}
-                <button type="button" data-bs-target="#carouselQuestions" data-bs-slide-to="{{forloop.counter0}}" {% if forloop.counter0 == 0 %}class="active"{% endif %} 
-                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselQuestions" data-bs-slide-to="{{forloop.counter0}}"
+                    {% if forloop.counter0 == 0 %}class="active" {% endif %} aria-current="true"
+                    aria-label="Slide 1"></button>
                 {% endfor %}
                 {% endif %}
             </div>
@@ -40,7 +41,7 @@
                 </div>
                 {% endfor %}
                 {% endif %}
-                
+
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselQuestions"
                 data-bs-slide="prev">
@@ -54,16 +55,18 @@
             </button>
         </div>
         <input type="submit" class="btn btn-primary" id="submit-btn">
+        {% if questions and measures %}
+        {% for question in questions %}
+        <select class="form-select" aria-label="Default select example" name="question-measure-{{question.pk}}"
+        {% if forloop.counter0 != 0 %}style="display: none;"{% endif %}>
+            {% for measure in measures %}
+            <option value="{{measure.pk}}" {% if measure.pk == 6 %}selected{% endif %}>{{measure.text}}</option>
+            {% endfor %}
+        </select>
+        {% endfor %}
+        {% endif %}
     </form>
-    {% if questions and measures %}
-                {% for question in questions %}
-                <select class="form-select" aria-label="Default select example" name="question-measure-{{question.pk}}" style="display: none;">
-                    {% for measure in measures %}
-                    <option value="{{measure.pk}}" {% if measure.pk == 6 %}selected{% endif %}>{{measure.text}}</option>
-                    {% endfor %}
-                </select>
-                {% endfor %}
-                {% endif %}
+
     <div class="stamps">
         <div class="cross-stamp" id="clear-btn">
             <img src="{% static 'platform/img/test-theme-1/cross.png' %}" width="135px" alt="">

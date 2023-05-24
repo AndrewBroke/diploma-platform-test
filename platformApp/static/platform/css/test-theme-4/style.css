@@ -1,0 +1,13 @@
+.tools{
+    width: 70vw;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.test-4-form{
+    width: 70vw;
+}

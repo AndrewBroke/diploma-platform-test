@@ -1,0 +1,17 @@
+{% extends 'platform/base.html' %}
+{% load static %}
+
+{% block loadStyles %}
+<link rel="stylesheet" href="{% static "platform/css/theory/style.css" %}">
+{% endblock loadStyles %}
+
+{% block scriptLoad %}
+<script src="{% static 'platform/js/theory/script.js' %}"></script>
+{% endblock scriptLoad %}
+
+{% block content %}
+<div class="content">
+{{ theory.text|safe}}
+</div>
+
+{% endblock content %}

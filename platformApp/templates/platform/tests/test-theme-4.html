@@ -1,0 +1,53 @@
+{% extends 'platform/base.html' %}
+{% load static %}
+
+{% block loadStyles %}
+<link rel="stylesheet" href="{% static "platform/css/test-theme-4/style.css" %}">
+{% endblock loadStyles %}
+
+{% block scriptLoad %}
+<script src="{% static 'platform/js/test-theme-4/script.js' %}"></script>
+{% endblock scriptLoad %}
+
+{% block content %}
+<div class="content pt-5">
+    <div class="tools d-flex justify-content-around">
+        <div>
+            <h2>Base64 -> Текст</h2>
+            <label for="base64-to-text-input" class="form-label">Введите Base64</label>
+            <input type="text" class="form-control" id="base64-to-text-input">
+            <label for="base64-to-text-output" class="form-label">Текст:</label>
+            <input type="text" readonly class="form-control-plaintext" id="base64-to-text-output" value="">
+            <button class="btn btn-primary mt-3" id="base64-to-text-btn">Расшифровать</button>
+        </div>
+        <div>
+            <h2>Текст -> base64</h2>
+            <label for="text-to-base64-input" class="form-label">Введите текст</label>
+            <input type="text" class="form-control" id="text-to-base64-input">
+            <label for="text-to-base64-output" class="form-label">Base64:</label>
+            <input type="text" readonly class="form-control-plaintext" id="text-to-base64-output" value="">
+            <button class="btn btn-primary mt-3" id="text-to-base64-btn">Зашифровать</button>
+        </div>
+
+        <div>
+            <h2>MD5</h2>
+            <label for="md5-input" class="form-label">Введите текст</label>
+            <input type="text" class="form-control" id="md5-input">
+            <label for="md5-output" class="form-label">MD5:</label>
+            <input type="text" readonly class="form-control-plaintext" id="md5-output" value="">
+            <button class="btn btn-primary mt-3" id="md5-btn">Получить хеш</button>
+        </div>
+    </div>
+    <form action="{{ request.get_full_path }}" method="post" class="test-4-form">
+        {% csrf_token %}
+        {% for question in questions %}
+        <div class="question-{{question.pk}} mt-5 ">
+            <h2>Вопрос {{forloop.counter}}</h2>
+            <p>{{question.text}}</p>
+            <input type="text" class="form-control" id="question-{{question.pk}}" name="question-{{question.pk}}">
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary mt-3" id="submit">Отправить</button>
+    </form>
+</div>
+{% endblock content %}
